@@ -20,8 +20,8 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-
 Route.get('/', async () => {
   console.log('get page')
   return { message: 'u just run a server with adonis' }
 })
+
