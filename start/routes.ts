@@ -25,3 +25,17 @@ Route.get('/', async () => {
   return { message: 'u just run a server with adonis' }
 })
 
+// Route.post('/login', async ({request}) => {
+//   const content = request.only(['username', 'password'])
+//   console.log('post login' + content)
+//   return { user: content }
+// })
+
+Route.post('/register', 'UsersController.register')
+
+
+Route.get('/register', async () => {
+  console.log('get register')
+  return { message: 'u need to register' }
+})
+
