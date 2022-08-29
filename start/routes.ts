@@ -20,22 +20,13 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  console.log('get page')
-  return { message: 'u just run a server with adonis' }
-})
 
-// Route.post('/login', async ({request}) => {
-//   const content = request.only(['username', 'password'])
-//   console.log('post login' + content)
-//   return { user: content }
-// })
 
-Route.post('/register', 'UsersController.register')
-
+Route.get('/', 'UsersController.index')
 
 Route.get('/register', async () => {
   console.log('get register')
   return { message: 'u need to register' }
 })
-
+Route.post('/register', 'UsersController.register')
+Route.post('/login', 'UsersController.login')

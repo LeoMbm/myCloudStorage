@@ -57,17 +57,17 @@ declare module '@ioc:Adonis/Addons/Auth' {
   interface GuardsList {
     /*
     |--------------------------------------------------------------------------
-    | Basic Auth Guard
+    | Web Guard
     |--------------------------------------------------------------------------
     |
-    | The basic guard uses basic auth for maintaining user login state. It uses
+    | The web guard uses sessions for maintaining user login state. It uses
     | the `user` provider for fetching user details.
     |
     */
-    basic: {
-      implementation: BasicAuthGuardContract<'user', 'basic'>
-      config: BasicAuthGuardConfig<'user'>
-      client: BasicAuthClientContract<'user'>
+    web: {
+      implementation: SessionGuardContract<'user', 'web'>
+      config: SessionGuardConfig<'user'>
+      client: SessionClientContract<'user'>
     }
   }
 }

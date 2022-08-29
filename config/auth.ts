@@ -17,22 +17,20 @@ import { AuthConfig } from '@ioc:Adonis/Addons/Auth'
 |
 */
 const authConfig: AuthConfig = {
-  guard: 'basic',
+  guard: 'web',
   guards: {
     /*
     |--------------------------------------------------------------------------
-    | Basic Auth Guard
+    | Web Guard
     |--------------------------------------------------------------------------
     |
-    | Uses Basic auth to authenticate an HTTP request. There is no concept of
-    | "login" and "logout" with basic auth. You just authenticate the requests
-    | using a middleware and browser will prompt the user to enter their login
-    | details
+    | Web guard uses classic old school sessions for authenticating users.
+    | If you are building a standard web application, it is recommended to
+    | use web guard with session driver
     |
     */
-    basic: {
-      driver: 'basic',
-      realm: 'Login',
+    web: {
+      driver: 'session',
 
       provider: {
         /*
