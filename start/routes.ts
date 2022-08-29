@@ -22,12 +22,16 @@ import Route from '@ioc:Adonis/Core/Route'
 
 
 
-Route.get('/', 'UsersController.index')
-
-Route.get('/register', async () => {
-  console.log('get register')
-  return { message: 'u need to register' }
-})
-Route.post('/register', 'UsersController.register')
-Route.post('/login', 'UsersController.login')
-Route.post('/logout', 'UsersController.logout')
+Route.group(() => {
+    Route.get('/', 'UsersController.index')
+    Route.get('/register', async () => {
+      console.log('get register')
+      return { message: 'u need to register' }
+    })
+    Route.post('/register', 'UsersController.register')
+    Route.post('/login', 'UsersController.login')
+    Route.post('/logout', 'UsersController.logout')
+  Route.group(() => {
+    Route.get('/', 'UsersController.getAllUsers')
+  }).prefix('/users').middleware('auth')
+  }).prefix('/api/v1')

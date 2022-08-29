@@ -36,4 +36,16 @@ export default class UsersController {
     await auth.use('web').logout()
     response.send("you have logged out")
   }
+
+  public async getAllUsers({response }: HttpContextContract){
+    try {
+      const users = await User.all()
+      // @ts-ignore
+      response.status(200).send({users})
+
+    }catch (e) {
+      console.log(e)
+      response.status(401).send({error: 'Unauthorized'})
+    }
+  }
 }
