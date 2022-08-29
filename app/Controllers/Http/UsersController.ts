@@ -13,10 +13,10 @@ export default class UsersController {
     return { message: `u are login as ${auth.user.email}` }
   }
 
-  public async register({ request }: HttpContextContract){
+  public async register({ request, response }: HttpContextContract){
     const payload = await request.validate(StoreUserValidator);
     const user = await User.create(payload)
-    return {message: user}
+    return response.status(201).send({message: user})
   }
 
   public async login({request, response, auth}: HttpContextContract){
