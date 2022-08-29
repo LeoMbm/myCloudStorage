@@ -31,7 +31,16 @@ Route.group(() => {
     Route.post('/register', 'UsersController.register')
     Route.post('/login', 'UsersController.login')
     Route.post('/logout', 'UsersController.logout')
+
   Route.group(() => {
     Route.get('/', 'UsersController.getAllUsers')
   }).prefix('/users').middleware('auth')
+
+
+  Route.group(() => {
+    Route.get('/', 'PostsController.getAllPost')
+    Route.post('/', 'PostsController.sendPost')
+  }).prefix('/post').middleware('auth')
+
+
   }).prefix('/api/v1')
